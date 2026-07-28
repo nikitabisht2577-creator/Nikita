@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <style>
+        body {
+            background: #1d1d1d;
+            color: white;
+            text-align: center;
+            border: 2px solid white;
+            border-radius: 10px;
+            height: 700px;
+    }
+
+    .score {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        font-size: 40px;
+    }
+
+    #user {
+        margin-left: 20px;
+        font-size: 30px;
+    }
+
+    #computer {
+        margin-left: 20px;
+        font-size: 30px;
+    }
+
+    #win {
+        margin-left: 20px;
+        font-size: 40px;
+    }
+
+    #lose {
+        margin-left: 20px;
+        font-size: 40px;
+    }
+
+    #tie {
+        margin-left: 20px;
+        font-size: 40px;
+    }
+
+    button img {
+        height: 200px;
+        width: 200px;
+    }
+
+    #head {
+        font-size: 40px;
+        margin-top: 0px;
+
+    }
+
+    #rock {
+        background: white;
+        margin: 15px;
+    }
+    #paper{
+        margin: 15px;
+    }
+    #scissors{
+        margin: 15px;
+
+    }
+    .choices{
+        display: flex;
+        font-size: 20px;
+        text-align: center;
+    }
+    #result{
+        font-size: 50px;
+        margin-top: 0px;
+    }
+    .you{
+        margin-left: 20%;
+    }
+    .machine{
+        margin-left: 10%;
+    }
+    .line{
+        margin-left: 20%;
+    }
+    
+    
+</style>
+
+<body>
+    <div id="background"><br>
+        <div id="head">GAME TIME 👾</div><br>
+        <button id="rock"><img
+                src="https://t3.ftcdn.net/jpg/19/57/57/66/360_F_1957576680_VQK0XIs5G00wBZnDl4sHiXR5W0y9TQwl.jpg"
+                alt="1"></button>
+        <button id="paper"><img
+                src="https://thumbs.dreamstime.com/b/splayed-fingers-hand-cartoon-glove-emoji-icon-illustration-sign-splayed-fingers-hand-cartoon-glove-emoji-icon-illustration-sign-413271975.jpg"
+                alt="2"></button>
+        <button id="scissor"><img
+                src="https://thumbs.dreamstime.com/b/victory-hand-cartoon-glove-emoji-icon-illustration-sign-human-gesture-vector-symbol-design-vector-clip-art-victory-hand-cartoon-415143881.jpg"
+                alt="3"></button>
+
+        <h2 id="result">result</h2>
+        <h2 class="score">
+
+            <p>🥇win<span id="win">0</span></p>
+            <p>👎lose<span id="lose">0</span></p>
+            <p>🤝tie<span id="tie">0</span></p>
+        </h2>
+
+        <div class="choices">
+
+            <p class="you">userchoice:<span id="user"></span></p>
+            <p class="line">USER<br> V/S<BR>COMPUTER</p>
+            <p class="machine">computerChoice:<span id="computer"></span></p>
+        </div>
+
+        <script>
+
+            let win = 0;
+            let lose = 0;
+            let tie = 0;
+
+            let result = document.getElementById("result")
+            let user = document.getElementById("user")
+            let computer = document.getElementById("computer")
+
+
+            let winScore = document.getElementById("win")
+            let loseScore = document.getElementById("lose")
+            let tieScore = document.getElementById("tie")
+
+            function computerplay() {
+                let option = ["rock", "paper", "scissor"]
+
+                let computerChoice = option[Math.floor(Math.random() * 3)]
+                return computerChoice
+            }
+
+            let rock = document.getElementById("rock")
+            let paper = document.getElementById("paper")
+            let scissor = document.getElementById("scissor")
+
+            rock.addEventListener("click", function () {
+                let userchoice = "rock"
+                let computerChoice = computerplay()
+
+                user.innerHTML = userchoice
+                computer.innerHTML = computerChoice
+
+                if (userchoice === computerChoice) {
+                    tie++
+                    tieScore.innerHTML = tie
+                    result.innerHTML = "tie👍"
+                    result.style.color="gold"
+                }
+                else if (userchoice == "rock" && computerChoice == "scissor"
+                || userchoice == "paper" && computerChoice == "rock" ||
+                userchoice == "scissor" && computerChoice == "paper"
+            ) {
+                win++
+                winScore.innerHTML = win
+                result.innerHTML = "win 🎉"
+                result.style.color="lime"
+            }
+            else {
+                lose++
+                loseScore.innerHTML = lose
+                result.innerHTML = "lose 😕"
+                result.style.color="red"
+                }
+            })
+
+            paper.addEventListener("click", function () {
+                let userchoice = "paper"
+                let computerChoice = computerplay()
+
+                user.innerHTML = userchoice
+                computer.innerHTML = computerChoice
+                if (userchoice === computerChoice) {
+                    tie++
+                    tieScore.innerHTML = tie
+                    result.innerText = "tie 👍"
+                    result.style.color="gold"
+                }
+                else if (userchoice == "rock" && computerChoice == "scissor"
+                || userchoice == "paper" && computerChoice == "rock" ||
+                userchoice == "scissor" && computerChoice == "paper"
+            ) {
+                win++
+                winScore.innerHTML = win
+                result.innerHTML = "win 🎉"
+                result.style.color="lime"
+            }
+            else {
+                lose++
+                loseScore.innerHTML = lose
+                result.innerHTML = "lose😕"
+                result.style.color="red"
+            }
+        })
+        
+        scissor.addEventListener("click", function () {
+            let userchoice = "scissor"
+            let computerChoice = computerplay()
+            user.innerHTML = userchoice
+            computer.innerHTML = computerChoice
+            
+            if (userchoice === computerChoice) {
+                tie++
+                tieScore.innerHTML = tie
+                result.innerHTML = "tie 👍"
+                result.style.color="lime"
+                
+            }
+            else if (userchoice == "rock" && computerChoice == "scissor"
+            || userchoice == "paper" && computerChoice == "rock" ||
+            userchoice == "scissor" && computerChoice == "paper"
+        ) {
+            win++
+            winScore.innerHTML = win
+            result.innerHTML = "win 🎉"
+            result.style.color="lime"
+            
+        }
+        else {
+            lose++
+            loseScore.innerHTML = lose
+            result.innerHTML = "lose 😕"
+            result.style.color="red"
+
+                }
+            })
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>
